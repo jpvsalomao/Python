@@ -1,0 +1,6 @@
+### Remove non-numeric rows from dataframe
+
+num_df = (df.drop(data_columns, axis=1)
+         .join(df[data_columns].apply(pd.to_numeric, errors='coerce')))
+
+num_df = num_df[num_df[data_columns].notnull().all(axis=1)]
